@@ -79,7 +79,7 @@ function Main() {
       >
         <div className="sidebar-title">
           <div className="sidebar-brand" onClick={onHome}>
-            E-Mandi
+            GreenGen
           </div>
           <span className="icon close_icon" onClick={OpenSidebar}>
             <IoClose />

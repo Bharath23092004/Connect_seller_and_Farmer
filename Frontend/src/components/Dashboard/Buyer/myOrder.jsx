@@ -118,8 +118,8 @@ const Order = () => {
                     </thead>
 
                     <tbody>
-                      {data.length !== 0 &&
-                        data.map(
+                      {data?.length !== 0 &&
+                        data?.map(
                           (item, index) =>
                             item.status !== "delivered" && (
                               <tr>

@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 //Port No.
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 //Routes
 
 //Authentication
@@ -21,7 +21,7 @@ app.use("/api/auth", require("./routes/auth"));
 app.use("/api/product", require("./routes/Farmer/listing.js"));
 
 //Manage Product
-app.use("/api/inventory", require("./routes/Farmer/inventory.js"));
+ app.use("/api/inventory", require("./routes/Farmer/inventory.js"));
 
 //Order Received
 app.use("/api/orderReceived", require("./routes/Farmer/OrderReceived.js"));
@@ -70,5 +70,5 @@ app.use("/api/update", require("./routes/Update/profile.js"));
 
 //Listen
 app.listen(port, () => {
-  console.log(`connected with port no: ${port}`);
+  console.log(`Server running on port ${port}`);
 });

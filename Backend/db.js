@@ -1,12 +1,26 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+
+// Load environment variables from .env file
 dotenv.config({ path: "./.env" });
 
-const mongoURI = `${process.env.MONGO_DB_URL}`;
-console.log(process.env.MONGO_DB_URL);
+// Retrieve MongoDB URI from environment variable
+const mongoURI = process.env.MONGO_URI;
+console.log("MongoDB URI:", mongoURI); // Debugging line to check URI
 
-const connectToMongo = () => {
-  mongoose.connect(mongoURI).then(console.log("connected with mongoose"));
+const connectToMongo = async () => {
+  try {
+    if (!mongoURI) {
+      throw new Error("MONGO_URI is not defined in environment variables.");
+    }
+    await mongoose.connect(mongoURI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("Connected to MongoDB with Mongoose");
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error);
+  }
 };
 
 module.exports = connectToMongo;
